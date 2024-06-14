@@ -1,0 +1,23 @@
+Este archivo es para llevar una anotacion de errores o de cosas que puedo mejorar de este codigo con mas tiempo:
+
+A) El programa al momento de querer cambiar de Window destruyendo la actual y creando una nueva, provoca
+que el root.root.mainloop siga ejecutando el root que se destruyo por ende algunas funciones como la de moveimage del
+slider se sigue ejecutando.
+
+Una solucion es crear los frames cuando se inicia el programa e irlos llamando cuando se requiera.
+
+Recuerda esta solucion consume mas memoria de la que se requiere, por lo que en un futuro seria ideal mejorarla.
+
+Realmente no afecta a este programa el consumo extra, debido a que tampoco hace la gran cosa, pero en futuos seria bueno
+corregir el:
+
+Concepto de Ventanas Simultáneas con Frames en Tkinter
+
+1. Creación Simultánea:
+Cuando se inicializa la clase principal (Window), se crean instancias de cada uno de los frames (LoginWindow, WindowInicio, WindowCrearCuenta) y se colocan en la misma posición dentro de una grid (fila 0, columna 0).
+
+2. Organización en una Grid:
+Todos los frames se colocan en la misma celda de la grid (row=0, column=0, sticky="nsew"). La opción sticky="nsew" asegura que cada frame se expanda para llenar toda la celda de la grid.
+
+3. Gestión de Visibilidad:
+Cada frame es una instancia separada de un widget tk.Frame y todos están contenidos en el widget principal. La visibilidad se gestiona utilizando el método tkraise(), que lleva el frame deseado al frente, haciéndolo visible, mientras que los otros frames permanecen en el fondo y, por lo tanto, no son visibles.
